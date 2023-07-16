@@ -32,7 +32,7 @@ const Details = () => {
         <h1>{pet.name}</h1>
         <h2>{pet.animal}</h2>
         <h2>
-          {pet.breed} — {pet.city} — {pet.city}, {pet.state}
+          {pet.breed} — {pet.city}, {pet.state}
           <button onClick={() => setShowModal(true)}>Adopt {pet.name}</button>
           <p>{pet.description}</p>
           {showModal ? (
