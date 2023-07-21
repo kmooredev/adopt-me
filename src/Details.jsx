@@ -6,7 +6,6 @@ import ErrorBoundary from "./errorBoundary";
 import fetchPet from "./fetchPet";
 import Carousel from "./Carousel";
 import Modal from "./modal";
-// import getAccessToken from "./getAccessToken";
 
 const Details = () => {
   const [showModal, setShowModal] = useState(false);
@@ -15,23 +14,6 @@ const Details = () => {
   const [_, setAdoptedPet] = useContext(AdoptedPetContext);
   const { id } = useParams();
   const results = useQuery(["details", id], fetchPet);
-
-  fetch("https://api.petfinder.com/v2/oauth2/token", {
-    method: "POST",
-    body:
-      "grant_type=client_credentials&client_id=" +
-      process.env.CLIENT_ID +
-      "&client_secret=" +
-      process.env.CLIENT_SECRET,
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-  });
-  // getAccessToken(
-  //   "https://api.petfinder.com/v2/oauth2/token",
-  //   `${process.env.CLIENT_ID}`,
-  //   `${process.env.CLIENT_SECRET}`
-  // );
 
   if (results.isLoading) {
     return (

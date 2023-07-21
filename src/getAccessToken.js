@@ -1,6 +1,9 @@
 const cache = {};
+let key = process.env.CLIENT_ID;
+let secret = process.env.CLIENT_SECRET;
 
-const getAccessToken = async (apiUrl, clientId, clientSecret) => {
+// now working
+const getAccessToken = async (apiUrl) => {
   if (cache[apiUrl]) {
     return cache[apiUrl];
   }
@@ -8,7 +11,7 @@ const getAccessToken = async (apiUrl, clientId, clientSecret) => {
   const response = await fetch(apiUrl, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: `grant_type=client_credentials&client_id=${clientId}&client_secret=${clientSecret}`,
+    body: `grant_type=client_credentials&client_id=${key}&client_secret=${secret}`,
   });
   console.log(response);
   const data = await response.json();
