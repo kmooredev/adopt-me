@@ -8,6 +8,7 @@ async function fetchSearch({ queryKey }) {
   const res = await fetch(
     `https://api.petfinder.com/v2/animals?type=${type}&location=${location}&breed=${breed}`,
     {
+      method: "GET",
       headers: {
         //prettier-ignore
         "Authorization": `Bearer ${token}`,
