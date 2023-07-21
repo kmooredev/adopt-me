@@ -5,12 +5,15 @@ const token = getAccessToken("https://api.petfinder.com/v2/oauth2/token");
 async function fetchSearch({ queryKey }) {
   const { type, location, breed } = queryKey[1];
 
-  const res = await fetch("https://api.petfinder.com/v2/animals/", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-  });
+  const res = await fetch(
+    `https://api.petfinder.com/v2/animals?type=${type}&location=${location}&breed=${breed}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    }
+  );
   /* const res = await fetch(
     `https://pets-v2.dev-apis.com/pets?type=${type}&location=${location}&breed=${breed}`
   ); */
