@@ -9,7 +9,8 @@ async function fetchSearch({ queryKey }) {
     `https://api.petfinder.com/v2/animals?type=${type}&location=${location}&breed=${breed}`,
     {
       headers: {
-        Authorization: `Bearer ${token}`,
+        //prettier-ignore
+        "Authorization": `Bearer ${token}`,
         "Content-Type": "application/x-www-form-urlencoded",
       },
     }
