@@ -6,16 +6,17 @@ const getAccessToken = async (apiUrl, clientId, clientSecret) => {
   }
 
   const response = await fetch(apiUrl, {
-    method: 'POST',
-    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: `grant_type=client_credentials&client_id=${clientId}&client_secret=${clientSecret}`,
-    mode: 'cors',
+    mode: "cors",
   });
   console.log(response);
   const data = await response.json();
   const accessToken = data.access_token;
   cache[apiUrl] = accessToken;
+  console.log(accessToken);
   return accessToken;
-}
+};
 
 export default getAccessToken;
