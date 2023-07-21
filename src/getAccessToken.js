@@ -9,7 +9,6 @@ const getAccessToken = async (apiUrl, clientId, clientSecret) => {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: `grant_type=client_credentials&client_id=${clientId}&client_secret=${clientSecret}`,
-    mode: "cors",
   });
   console.log(response);
   const data = await response.json();
