@@ -1,4 +1,4 @@
-import pf from "./petfinder";
+import pf from "./Pf";
 
 const fetchPet = async ({ queryKey }) => {
   const id = queryKey[1];

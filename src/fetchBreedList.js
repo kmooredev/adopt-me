@@ -1,4 +1,4 @@
-import pf from "./petfinder";
+import pf from "./Pf";
 
 const fetchBreedList = async ({ queryKey }) => {
   const type = queryKey[1];

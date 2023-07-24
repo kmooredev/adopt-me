@@ -1,4 +1,4 @@
-import pf from "./petfinder";
+import pf from "./Pf";
 
 async function fetchSearch({ queryKey }) {
   const { type, location, breed } = queryKey[1];
