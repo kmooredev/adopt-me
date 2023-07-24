@@ -1,13 +1,17 @@
+import pf from "./petfinder";
+
 const fetchPet = async ({ queryKey }) => {
   const id = queryKey[1];
-
-  const apiRes = await fetch(`https://pets-v2.dev-apis.com/pets?id=${id}`);
-
-  if (!apiRes.ok) {
-    throw new Error(`details/${id} fetch not ok`);
+  const numId = Number(id);
+  console.log(numId);
+  try {
+    const apiRes = await pf.animal.show(numId);
+    console.log(apiRes.data.animal);
+    return apiRes.data.animal;
+  } catch (error) {
+    console.error(error);
+    throw error;
   }
-
-  return apiRes.json();
 };
 
 export default fetchPet;

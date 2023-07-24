@@ -4,20 +4,29 @@ import AdoptedPetContext from "./adoptedPetContext";
 import Results from "./results";
 import useBreedList from "./useBreedList";
 import fetchSearch from "./fetchSearch";
-const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
+const ANIMALS = [
+  "bird",
+  "cat",
+  "dog",
+  "rabbit",
+  "horse",
+  "scales, fins & other",
+  "small & furry",
+  "barnyard",
+];
 
 const SearchParams = () => {
   const [requestParams, setRequestParams] = useState({
-    location: "",
-    animal: "",
-    breed: "",
+    animal: "dog",
+    breed: "American Bully",
+    location: "TX",
   });
   const [animal, setAnimal] = useState("");
   const [breeds] = useBreedList(animal);
   const [adoptedPet] = useContext(AdoptedPetContext);
 
   const results = useQuery(["search", requestParams], fetchSearch);
-  const pets = results?.data?.pets ?? [];
+  const pets = results?.data?.animals ?? [];
 
   return (
     <div className="search-params">
@@ -69,8 +78,8 @@ const SearchParams = () => {
           <select disabled={!breeds.length} id="breed" name="breed">
             <option />
             {breeds.map((breed) => (
-              <option key={breed} value={breed}>
-                {breed}
+              <option key={breed.name} value={breed.name}>
+                {breed.name}
               </option>
             ))}
           </select>

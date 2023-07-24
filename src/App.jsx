@@ -24,7 +24,7 @@ const App = () => {
           <header>
             <Link to="/">Furry Friends Adoption</Link>
           </header>
-          <h1>Find Your Furry Friend!</h1>
+          {/* <h1>Find Your Furry Friend!</h1> */}
           <Routes>
             <Route path="/details/:id" element={<Details />} />
             <Route path="/" element={<SearchParams />} />

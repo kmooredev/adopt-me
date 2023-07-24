@@ -1,15 +1,19 @@
+import pf from "./petfinder";
+
 async function fetchSearch({ queryKey }) {
   const { type, location, breed } = queryKey[1];
 
-  const res = await fetch(
-    `https://pets-v2.dev-apis.com/pets?type=${type}&location=${location}&breed=${breed}`
-  );
-
-  if (!res.ok) {
-    throw new Error(`pet search not okay ${type}, ${location}, ${breed}`);
+  try {
+    const res = await pf.animal.search({
+      type: type,
+      breed: breed,
+      location: location,
+    });
+    return res.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
   }
-
-  return res.json();
 }
 
 export default fetchSearch;

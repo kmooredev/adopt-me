@@ -13,8 +13,8 @@ const Details = () => {
   // eslint-disable-next-line no-unused-vars
   const [_, setAdoptedPet] = useContext(AdoptedPetContext);
   const { id } = useParams();
-  const results = useQuery(["details", id], fetchPet);
 
+  const results = useQuery(["details", id], fetchPet);
   if (results.isLoading) {
     return (
       <div className="loading-pane">
@@ -22,19 +22,22 @@ const Details = () => {
       </div>
     );
   }
+  console.log(results.data);
 
-  const pet = results.data.pets[0];
+  const pet = results.data;
 
   return (
     <div className="details">
-      <Carousel images={pet.images} />
+      <Carousel images={pet.photos} />
       <div>
         <h1>{pet.name}</h1>
-        <h2>{pet.animal}</h2>
+        <h2>{pet.type}</h2>
         <h2>
-          {pet.breed} — {pet.city}, {pet.state}
+          {pet.breeds.primary} — {pet.contact.address.city},{" "}
+          {pet.contact.address.state}
           <button onClick={() => setShowModal(true)}>Adopt {pet.name}</button>
           <p>{pet.description}</p>
+          <a href={pet.url}>Find Out More About {pet.name}</a>
           {showModal ? (
             <Modal>
               <div>

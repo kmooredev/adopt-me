@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 
 const Pet = (props) => {
-  const { name, animal, breed, images, location, id } = props;
-
+  const { name, animal, breed, photos = [], location, id } = props;
   let hero = "http://pet-images.dev-apis.com/pets/none.jpg";
-  if (images.length) {
-    hero = images[0];
+  if (photos.length) {
+    hero = photos[0].small;
   }
   return (
     <Link to={`/details/${id}`} className="pet">
