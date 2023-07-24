@@ -1,4 +1,4 @@
-import { Client } from "../node_modules/@petfinder/petfinder-js";
+import { Client } from "@petfinder/petfinder-js";
 
 const pf = new Client({
   apiKey: process.env.CLIENT_ID,
