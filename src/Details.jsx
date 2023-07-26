@@ -22,7 +22,6 @@ const Details = () => {
       </div>
     );
   }
-  console.log(results.data);
 
   const pet = results.data;
 
@@ -46,7 +45,7 @@ const Details = () => {
                   <button
                     onClick={() => {
                       setAdoptedPet(pet);
-                      navigate("/");
+                      navigate(-1);
                     }}
                   >
                     Yes

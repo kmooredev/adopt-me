@@ -17,9 +17,9 @@ const ANIMALS = [
 
 const SearchParams = () => {
   const [requestParams, setRequestParams] = useState({
-    animal: "dog",
-    breed: "American Bully",
-    location: "TX",
+    animal: "",
+    breed: "",
+    location: "",
   });
   const [animal, setAnimal] = useState("");
   const [breeds] = useBreedList(animal);
@@ -44,7 +44,7 @@ const SearchParams = () => {
       >
         {adoptedPet ? (
           <div className="pet image-container">
-            <img src={adoptedPet.images[0]} alt={adoptedPet.name} />
+            <img src={adoptedPet.photos[0].large} alt={adoptedPet.name} />
           </div>
         ) : null}
         <label htmlFor="location">
